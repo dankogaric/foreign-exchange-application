@@ -1,0 +1,48 @@
+{
+    "name": "Order",
+    "fields": [
+        {
+            "fieldName": "surchargeAmount",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "purchasedAmount",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "paidAmount",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "discountPercentage",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "discountAmount",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "creationDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "currency",
+            "otherEntityRelationshipName": "order",
+            "relationshipName": "purchasedCurrency",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20201127134924",
+    "entityTableName": "order",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

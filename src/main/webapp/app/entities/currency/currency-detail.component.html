@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="currency">
+            <h2><span jhiTranslate="foreignExchangeApp.currency.detail.title">Currency</span> {{currency.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="foreignExchangeApp.currency.abbreviation">Abbreviation</span></dt>
+                <dd>
+                    <span>{{currency.abbreviation}}</span>
+                </dd>
+                <dt><span jhiTranslate="foreignExchangeApp.currency.name">Name</span></dt>
+                <dd>
+                    <span>{{currency.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="foreignExchangeApp.currency.country">Country</span></dt>
+                <dd>
+                    <span>{{currency.country}}</span>
+                </dd>
+                <dt><span jhiTranslate="foreignExchangeApp.currency.fee">Fee</span></dt>
+                <dd>
+                    <span>{{currency.fee}}</span>
+                </dd>
+                <dt><span jhiTranslate="foreignExchangeApp.currency.discount">Discount</span></dt>
+                <dd>
+                    <span>{{currency.discount}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/currency', currency.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

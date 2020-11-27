@@ -1,0 +1,25 @@
+{
+  "foreignExchangeApp": {
+    "currencyPair": {
+      "home": {
+        "title": "Currency Pairs",
+        "createLabel": "Create a new Currency Pair",
+        "createOrEditLabel": "Create or edit a Currency Pair",
+        "notFound": "No Currency Pairs found"
+      },
+      "created": "A new Currency Pair is created with identifier {{ param }}",
+      "updated": "A Currency Pair is updated with identifier {{ param }}",
+      "deleted": "A Currency Pair is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Currency Pair {{ id }}?"
+      },
+      "detail": {
+        "title": "Currency Pair"
+      },
+      "name": "Name",
+      "exchangeRate": "Exchange Rate",
+      "currencyToSell": "Currency To Sell",
+      "currencyToBuy": "Currency To Buy"
+    }
+  }
+}

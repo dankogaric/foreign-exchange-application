@@ -1,0 +1,28 @@
+{
+  "foreignExchangeApp": {
+    "order": {
+      "home": {
+        "title": "Orders",
+        "createLabel": "Order erstellen",
+        "createOrEditLabel": "Order erstellen oder bearbeiten",
+        "notFound": "No Orders found"
+      },
+      "created": "Order erstellt mit ID {{ param }}",
+      "updated": "Order aktualisiert mit ID {{ param }}",
+      "deleted": "Order gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Order {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Order"
+      },
+      "surchargeAmount": "Surcharge Amount",
+      "purchasedAmount": "Purchased Amount",
+      "paidAmount": "Paid Amount",
+      "discountPercentage": "Discount Percentage",
+      "discountAmount": "Discount Amount",
+      "creationDate": "Creation Date",
+      "purchasedCurrency": "Purchased Currency"
+    }
+  }
+}

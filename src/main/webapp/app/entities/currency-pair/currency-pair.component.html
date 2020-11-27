@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="foreignExchangeApp.currencyPair.home.title">Currency Pairs</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-currency-pair" [routerLink]="['/currency-pair/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="foreignExchangeApp.currencyPair.home.createLabel">
+            Create a new Currency Pair
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="currencyPairs?.length === 0">
+        <span jhiTranslate="foreignExchangeApp.currencyPair.home.notFound">No currencyPairs found</span>
+    </div>
+    <div class="table-responsive" *ngIf="currencyPairs?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="name"><span jhiTranslate="foreignExchangeApp.currencyPair.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="exchangeRate"><span jhiTranslate="foreignExchangeApp.currencyPair.exchangeRate">Exchange Rate</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="currencyToSell.id"><span jhiTranslate="foreignExchangeApp.currencyPair.currencyToSell">Currency To Sell</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="currencyToBuy.id"><span jhiTranslate="foreignExchangeApp.currencyPair.currencyToBuy">Currency To Buy</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let currencyPair of currencyPairs ;trackBy: trackId">
+                <td><a [routerLink]="['/currency-pair', currencyPair.id, 'view' ]">{{currencyPair.id}}</a></td>
+                <td>{{currencyPair.name}}</td>
+                <td>{{currencyPair.exchangeRate}}</td>
+                <td>
+                    <div *ngIf="currencyPair.currencyToSell">
+                        <a [routerLink]="['/currency', currencyPair.currencyToSell?.id, 'view' ]" >{{currencyPair.currencyToSell?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="currencyPair.currencyToBuy">
+                        <a [routerLink]="['/currency', currencyPair.currencyToBuy?.id, 'view' ]" >{{currencyPair.currencyToBuy?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/currency-pair', currencyPair.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/currency-pair', currencyPair.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(currencyPair)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="currencyPairs?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -47,6 +47,10 @@ public class CacheConfiguration {
             createCache(cm, com.brandstreet.foreignexchange.domain.User.class.getName());
             createCache(cm, com.brandstreet.foreignexchange.domain.Authority.class.getName());
             createCache(cm, com.brandstreet.foreignexchange.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.brandstreet.foreignexchange.domain.Currency.class.getName());
+            createCache(cm, com.brandstreet.foreignexchange.domain.Currency.class.getName() + ".orders");
+            createCache(cm, com.brandstreet.foreignexchange.domain.CurrencyPair.class.getName());
+            createCache(cm, com.brandstreet.foreignexchange.domain.Order.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

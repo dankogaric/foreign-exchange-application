@@ -1,0 +1,37 @@
+// Flight Advisor
+
+entity Currency {
+	abbreviation String maxlength(3),
+    name String,
+    country String,
+    fee Double,
+    discount Double
+}
+
+entity CurrencyPair {
+	name String maxlength(6),
+    exchangeRate Double
+}
+
+entity Order {
+	surchargeAmount Double,
+    purchasedAmount Double,
+    paidAmount Double,
+    discountPercentage Double,
+    discountAmount Double,
+    creationDate LocalDate
+}
+
+relationship ManyToOne {
+	CurrencyPair{currencyToSell} to Currency
+    CurrencyPair{currencyToBuy} to Currency
+}
+
+relationship OneToMany {
+	Currency to Order{purchasedCurrency}
+}
+
+
+// Set pagination options
+paginate Currency, CurrencyPair, Order with pagination
+

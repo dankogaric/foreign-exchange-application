@@ -1,0 +1,27 @@
+{
+  "foreignExchangeApp": {
+    "currency": {
+      "home": {
+        "title": "Currencies",
+        "createLabel": "Currency erstellen",
+        "createOrEditLabel": "Currency erstellen oder bearbeiten",
+        "notFound": "No Currencies found"
+      },
+      "created": "Currency erstellt mit ID {{ param }}",
+      "updated": "Currency aktualisiert mit ID {{ param }}",
+      "deleted": "Currency gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Currency {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Currency"
+      },
+      "abbreviation": "Abbreviation",
+      "name": "Name",
+      "country": "Country",
+      "fee": "Fee",
+      "discount": "Discount",
+      "order": "Order"
+    }
+  }
+}
