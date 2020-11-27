@@ -30,14 +30,14 @@
                     <label class="form-control-label" jhiTranslate="foreignExchangeApp.currencyPair.currencyToSell" for="field_currencyToSell">Currency To Sell</label>
                     <select class="form-control" id="field_currencyToSell" name="currencyToSell" formControlName="currencyToSell">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="currencyOption.id === editForm.get('currencyToSell')!.value?.id ? editForm.get('currencyToSell')!.value : currencyOption" *ngFor="let currencyOption of currencies; trackBy: trackById">{{currencyOption.id}}</option>
+                        <option [ngValue]="currencyOption.id === editForm.get('currencyToSell')!.value?.id ? editForm.get('currencyToSell')!.value : currencyOption" *ngFor="let currencyOption of currencies; trackBy: trackById">{{currencyOption.abbreviation}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="foreignExchangeApp.currencyPair.currencyToBuy" for="field_currencyToBuy">Currency To Buy</label>
                     <select class="form-control" id="field_currencyToBuy" name="currencyToBuy" formControlName="currencyToBuy">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="currencyOption.id === editForm.get('currencyToBuy')!.value?.id ? editForm.get('currencyToBuy')!.value : currencyOption" *ngFor="let currencyOption of currencies; trackBy: trackById">{{currencyOption.id}}</option>
+                        <option [ngValue]="currencyOption.id === editForm.get('currencyToBuy')!.value?.id ? editForm.get('currencyToBuy')!.value : currencyOption" *ngFor="let currencyOption of currencies; trackBy: trackById">{{currencyOption.abbreviation}}</option>
                     </select>
                 </div>
             </div>
