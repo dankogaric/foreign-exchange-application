@@ -28,7 +28,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
- * Integration tests for the {@link CurrencyResource} REST controller.
+ * Integration tests for the {@link CurrencyController} REST controller.
  */
 @SpringBootTest(classes = ForeignExchangeApp.class)
 public class CurrencyResourceIT {
@@ -73,7 +73,7 @@ public class CurrencyResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final CurrencyResource currencyResource = new CurrencyResource(currencyRepository);
+        final CurrencyController currencyResource = new CurrencyController();
         this.restCurrencyMockMvc = MockMvcBuilders.standaloneSetup(currencyResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

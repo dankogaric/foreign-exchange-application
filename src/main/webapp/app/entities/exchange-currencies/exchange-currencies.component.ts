@@ -118,7 +118,7 @@ export class ExchangeCurrenciesComponent implements OnInit {
 
   resetForm(): void {
     this.exchangeForm.patchValue({
-      id: [],
+      id: null,
       surchargePercentage: [],
       surchargeAmount: [],
       purchasedAmount: [],

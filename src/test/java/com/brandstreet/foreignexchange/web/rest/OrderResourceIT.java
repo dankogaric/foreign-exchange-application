@@ -30,7 +30,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
- * Integration tests for the {@link OrderResource} REST controller.
+ * Integration tests for the {@link OrderController} REST controller.
  */
 @SpringBootTest(classes = ForeignExchangeApp.class)
 public class OrderResourceIT {
@@ -78,7 +78,7 @@ public class OrderResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final OrderResource orderResource = new OrderResource(orderRepository);
+        final OrderController orderResource = new OrderController();
         this.restOrderMockMvc = MockMvcBuilders.standaloneSetup(orderResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
