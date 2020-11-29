@@ -23,6 +23,9 @@ public class Order implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
+    @Column(name = "surcharge_percentage")
+    private Double surchargePercentage; 
+    
     @Column(name = "surcharge_amount")
     private Double surchargeAmount;
 
@@ -38,6 +41,9 @@ public class Order implements Serializable {
     @Column(name = "discount_amount")
     private Double discountAmount;
 
+    @Column(name = "exchange_rate")
+    private Double exchangeRate;
+    
     @Column(name = "creation_date")
     private LocalDate creationDate;
 
@@ -67,7 +73,23 @@ public class Order implements Serializable {
         this.surchargeAmount = surchargeAmount;
     }
 
-    public Double getPurchasedAmount() {
+    public Double getSurchargePercentage() {
+		return surchargePercentage;
+	}
+
+	public void setSurchargePercentage(Double surchargePercentage) {
+		this.surchargePercentage = surchargePercentage;
+	}
+
+	public Double getExchangeRate() {
+		return exchangeRate;
+	}
+
+	public void setExchangeRate(Double exchangeRate) {
+		this.exchangeRate = exchangeRate;
+	}
+
+	public Double getPurchasedAmount() {
         return purchasedAmount;
     }
 
