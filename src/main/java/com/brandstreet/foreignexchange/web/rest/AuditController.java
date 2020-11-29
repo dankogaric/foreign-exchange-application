@@ -21,10 +21,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
  */
 @RestController
 @RequestMapping("/management/audits")
-public class AuditResource {
+public class AuditController {
     private final AuditEventService auditEventService;
 
-    public AuditResource(AuditEventService auditEventService) {
+    public AuditController(AuditEventService auditEventService) {
         this.auditEventService = auditEventService;
     }
 
