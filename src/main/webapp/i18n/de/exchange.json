@@ -1,21 +1,31 @@
 {
   "foreignExchangeApp": {
-    "currency": {
+    "exchange": {
       "home": {
-        "title": "Währungen",
+        "title": "Währungen tauschen",
         "createLabel": "Währung erstellen",
         "createOrEditLabel": "Currency erstellen oder bearbeiten",
         "notFound": "No Currencies found"
       },
+      "from": "From",
+      "to": "To",
+      "amountToPurchase": "Zu kaufende Menge",
+      "purchasedCurrency": "Zu kaufende Währung",
+      "amountToPay": "Zu zahlender Betrag (USD)",
       "created": "Currency erstellt mit ID {{ param }}",
       "updated": "Currency aktualisiert mit ID {{ param }}",
       "deleted": "Currency gelöscht mit ID {{ param }}",
       "delete": {
         "question": "Soll Currency {{ id }} wirklich dauerhaft gelöscht werden?"
       },
+      "refreshRates": "Wechselkurse aktualisieren",
       "detail": {
         "title": "Currency"
       },
+      "confirm": {
+        "question": "Sind Sie sicher, dass Sie kaufen möchten {{purchasedAmount}} {{purchasedCurrency}}?"
+      },
+      "confirmation": "Umtauschtransaktion bestätigen.",
       "abbreviation": "Abbreviation",
       "name": "Name",
       "country": "Country",

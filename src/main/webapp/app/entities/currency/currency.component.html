@@ -11,10 +11,10 @@
     <jhi-alert-error></jhi-alert-error>
     <jhi-alert></jhi-alert>
     <br/>
-    <div class="alert alert-warning" *ngIf="currencies?.length === 0">
+    <div class="alert alert-warning" *ngIf="currencies!.length === 0">
         <span jhiTranslate="foreignExchangeApp.currency.home.notFound">No currencies found</span>
     </div>
-    <div class="table-responsive" *ngIf="currencies?.length > 0">
+    <div class="table-responsive" *ngIf="currencies!.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
@@ -38,13 +38,13 @@
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"
-                                [routerLink]="['/currency', currency.id, 'view' ]"
+                                [routerLink]="['/currency', currency!.id, 'view' ]"
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/currency', currency.id, 'edit']"
+                                [routerLink]="['/currency', currency!.id, 'edit']"
                                 class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
@@ -60,7 +60,7 @@
             </tbody>
         </table>
     </div>
-    <div *ngIf="currencies?.length > 0">
+    <div *ngIf="currencies!.length > 0">
         <div class="row justify-content-center">
             <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
         </div>

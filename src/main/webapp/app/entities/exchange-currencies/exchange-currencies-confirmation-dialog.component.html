@@ -1,0 +1,19 @@
+<form *ngIf="order" name="deleteForm" (ngSubmit)="confirmOrder(order)">
+    <div class="modal-header">
+        <h4 class="modal-title" jhiTranslate="foreignExchangeApp.exchange.confirmation">Confirm exchange transaction.</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <p id="jhi-exchange-confirmation-heading" jhiTranslate="foreignExchangeApp.exchange.confirm.question" [translateValues]="{purchasedAmount: order.purchasedAmount, purchasedCurrency: order!.purchasedCurrency!.abbreviation}">Are you sure you want to buy?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button id="jhi-confirm-exchange" type="submit" class="btn btn-primary">
+            <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.confirm">Confirm</span>
+        </button>
+    </div>
+</form>

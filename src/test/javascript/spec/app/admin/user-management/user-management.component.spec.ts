@@ -3,9 +3,9 @@ import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { of } from 'rxjs';
 
 import { ForeignExchangeTestModule } from '../../../test.module';
-import { UserManagementComponent } from 'app/admin/user-management/user-management.component';
-import { UserService } from 'app/core/user/user.service';
-import { User } from 'app/core/user/user.model';
+import { UserManagementComponent } from '../../../../../../main/webapp/app/admin/user-management/user-management.component';
+import { UserService } from '../../../../../../main/webapp/app/core/user/user.service';
+import { User } from '../../../../../../main/webapp/app/core/user/user.model';
 
 describe('Component Tests', () => {
   describe('User Management Component', () => {

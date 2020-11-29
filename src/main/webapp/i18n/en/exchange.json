@@ -1,0 +1,37 @@
+{
+  "foreignExchangeApp": {
+    "exchange": {
+      "home": {
+        "title": "Exchange Currencies",
+        "createLabel": "Create a new Currency",
+        "createOrEditLabel": "Create or edit a Currency",
+        "notFound": "No Currencies found"
+      },
+      "from": "From",
+      "to": "To",
+      "amountToPurchase": "Amount to Purchase",
+      "purchasedCurrency": "Currency to Purchase",
+      "amountToPay": "Amount to Pay (USD)",
+      "created": "A new Currency is created with identifier {{ param }}",
+      "updated": "A Currency is updated with identifier {{ param }}",
+      "deleted": "A Currency is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Currency {{ id }}?"
+      },
+      "refreshRates": "Refresh Rates",
+      "detail": {
+        "title": "Currency"
+      },
+      "confirm": {
+        "question": "Are you sure you want to buy {{purchasedAmount}} {{purchasedCurrency}}?"
+      },
+      "confirmation": "Confirm exchange transaction.",
+      "abbreviation": "Abbreviation",
+      "name": "Name",
+      "country": "Country",
+      "fee": "Fee",
+      "discount": "Discount",
+      "order": "Order"
+    }
+  }
+}

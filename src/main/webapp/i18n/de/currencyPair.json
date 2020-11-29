@@ -2,8 +2,8 @@
   "foreignExchangeApp": {
     "currencyPair": {
       "home": {
-        "title": "Currency Pairs",
-        "createLabel": "Currency Pair erstellen",
+        "title": "Währungspaare",
+        "createLabel": "Währungspaar erstellen",
         "createOrEditLabel": "Currency Pair erstellen oder bearbeiten",
         "notFound": "No Currency Pairs found"
       },

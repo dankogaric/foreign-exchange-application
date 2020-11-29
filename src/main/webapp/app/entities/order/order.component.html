@@ -1,20 +1,14 @@
 <div>
     <h2 id="page-heading">
         <span jhiTranslate="foreignExchangeApp.order.home.title">Orders</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-order" [routerLink]="['/order/new']">
-            <fa-icon [icon]="'plus'"></fa-icon>
-            <span  jhiTranslate="foreignExchangeApp.order.home.createLabel">
-            Create a new Order
-            </span>
-        </button>
     </h2>
     <jhi-alert-error></jhi-alert-error>
     <jhi-alert></jhi-alert>
     <br/>
-    <div class="alert alert-warning" *ngIf="orders?.length === 0">
+    <div class="alert alert-warning" *ngIf="orders!.length === 0">
         <span jhiTranslate="foreignExchangeApp.order.home.notFound">No orders found</span>
     </div>
-    <div class="table-responsive" *ngIf="orders?.length > 0">
+    <div class="table-responsive" *ngIf="orders!.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
@@ -40,22 +34,16 @@
                 <td>{{order.creationDate | date:'mediumDate'}}</td>
                 <td>
                     <div *ngIf="order.purchasedCurrency">
-                        <a [routerLink]="['/currency', order.purchasedCurrency?.id, 'view' ]" >{{order.purchasedCurrency?.id}}</a>
+                        <a [routerLink]="['/currency', order.purchasedCurrency?.id, 'view' ]" >{{order.purchasedCurrency?.name}}</a>
                     </div>
                 </td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"
-                                [routerLink]="['/order', order.id, 'view' ]"
+                                [routerLink]="['/order', order!.id, 'view' ]"
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/order', order.id, 'edit']"
-                                class="btn btn-primary btn-sm">
-                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit" (click)="delete(order)"
                                 class="btn btn-danger btn-sm">
@@ -68,7 +56,7 @@
             </tbody>
         </table>
     </div>
-    <div *ngIf="orders?.length > 0">
+    <div *ngIf="orders!.length > 0">
         <div class="row justify-content-center">
             <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
         </div>

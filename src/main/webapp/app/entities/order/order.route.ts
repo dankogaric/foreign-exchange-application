@@ -10,7 +10,6 @@ import { IOrder, Order } from 'app/shared/model/order.model';
 import { OrderService } from './order.service';
 import { OrderComponent } from './order.component';
 import { OrderDetailComponent } from './order-detail.component';
-import { OrderUpdateComponent } from './order-update.component';
 
 @Injectable({ providedIn: 'root' })
 export class OrderResolve implements Resolve<IOrder> {
@@ -51,30 +50,6 @@ export const orderRoute: Routes = [
   {
     path: ':id/view',
     component: OrderDetailComponent,
-    resolve: {
-      order: OrderResolve
-    },
-    data: {
-      authorities: ['ROLE_USER'],
-      pageTitle: 'foreignExchangeApp.order.home.title'
-    },
-    canActivate: [UserRouteAccessService]
-  },
-  {
-    path: 'new',
-    component: OrderUpdateComponent,
-    resolve: {
-      order: OrderResolve
-    },
-    data: {
-      authorities: ['ROLE_USER'],
-      pageTitle: 'foreignExchangeApp.order.home.title'
-    },
-    canActivate: [UserRouteAccessService]
-  },
-  {
-    path: ':id/edit',
-    component: OrderUpdateComponent,
     resolve: {
       order: OrderResolve
     },

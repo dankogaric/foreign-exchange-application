@@ -29,6 +29,24 @@ Navbar
   }
 }
 
+.flag-germany {
+  height: 20px;
+  width: 30px;
+  display: inline-block;
+  vertical-align: middle;
+  background: url('../../../content/images/germany-flag.png') no-repeat center center;
+  background-size: contain;
+}
+
+.flag-uk {
+  height: 20px;
+  width: 30px;
+  display: inline-block;
+  vertical-align: middle;
+  background: url('../../../content/images/uk-flag.png') no-repeat center center;
+  background-size: contain;
+}
+
 /* ==========================================================================
 Logo styles
 ========================================================================== */

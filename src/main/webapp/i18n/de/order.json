@@ -2,8 +2,8 @@
   "foreignExchangeApp": {
     "order": {
       "home": {
-        "title": "Orders",
-        "createLabel": "Order erstellen",
+        "title": "Aufträge",
+        "createLabel": "Auftrag erstellen",
         "createOrEditLabel": "Order erstellen oder bearbeiten",
         "notFound": "No Orders found"
       },

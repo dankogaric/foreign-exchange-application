@@ -16,37 +16,33 @@
                     </span>
                 </a>
             </li>
-            <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
-            <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
-                    <span>
-                        <fa-icon icon="th-list"></fa-icon>
-                        <span jhiTranslate="global.menu.entities.main">
-                            Entities
-                        </span>
-                    </span>
+            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="exchange" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <!-- <fa-icon icon="th-list" fixedWidth="true"></fa-icon> -->
+                    <fa-icon icon="th-list"></fa-icon>
+                    <span jhiTranslate="global.menu.entities.exchange">Exchange</span>
                 </a>
-                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
-                    <li>
-                        <a class="dropdown-item" routerLink="currency" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
-                            <span jhiTranslate="global.menu.entities.currency">Currency</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="currency-pair" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
-                            <span jhiTranslate="global.menu.entities.currencyPair">Currency Pair</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="order" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
-                            <span jhiTranslate="global.menu.entities.order">Order</span>
-                        </a>
-                    </li>
-                    <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
-                </ul>
+            </li>
+            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="currency" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <!-- <fa-icon icon="th-list" fixedWidth="true"></fa-icon> -->
+                    <fa-icon icon="th-list"></fa-icon>
+                    <span jhiTranslate="global.menu.entities.currency">Currency</span>
+                </a>
+            </li>
+            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="currency-pair" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <!-- <fa-icon icon="th-list" fixedWidth="true"></fa-icon> -->
+                    <fa-icon icon="th-list"></fa-icon>
+                    <span jhiTranslate="global.menu.entities.currencyPair">Currency Pair</span>
+                </a>
+            </li>
+            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="order" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <!-- <fa-icon icon="th-list" fixedWidth="true"></fa-icon> -->
+                    <fa-icon icon="th-list"></fa-icon>
+                    <span jhiTranslate="global.menu.entities.order">Order</span>
+                </a>
             </li>
             <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu">
@@ -101,18 +97,15 @@
                     <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
                 </ul>
             </li>
-            <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" *ngIf="languages && languages.length > 1">
-                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="languagesnavBarDropdown">
-                    <span>
-                        <fa-icon icon="flag"></fa-icon>
-                        <span jhiTranslate="global.menu.language">Language</span>
-                    </span>
+            <li class="nav-item"  *ngIf="languages && languages.length > 1">
+                <a class="nav-link"  href="javascript:void(0);" title="English" (click)="changeLanguage('en');collapseNavbar();">
+                    <span class="flag-uk"></span>
                 </a>
-                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="languagesnavBarDropdown">
-                    <li *ngFor="let language of languages">
-                        <a class="dropdown-item" [jhiActiveMenu]="language" href="javascript:void(0);" (click)="changeLanguage(language);collapseNavbar();">{{ language | findLanguageFromKey }}</a>
-                    </li>
-                </ul>
+            </li>
+            <li class="nav-item" *ngIf="languages && languages.length > 1">
+                <a class="nav-link"  href="javascript:void(0);" title="German" (click)="changeLanguage('de');collapseNavbar();">
+                    <span class="flag-germany"></span>
+                </a>
             </li>
             <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu">

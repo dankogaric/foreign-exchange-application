@@ -13,4 +13,4 @@ import { currencyPairRoute } from './currency-pair.route';
   declarations: [CurrencyPairComponent, CurrencyPairDetailComponent, CurrencyPairUpdateComponent, CurrencyPairDeleteDialogComponent],
   entryComponents: [CurrencyPairDeleteDialogComponent]
 })
-export class ForeignExchangeCurrencyPairModule {}
+export class CurrencyPairModule {}

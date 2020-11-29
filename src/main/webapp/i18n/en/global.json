@@ -9,6 +9,7 @@
         "main": "Entities",
         "currency": "Currency",
         "currencyPair": "Currency Pair",
+        "exchange": "Exchange",
         "order": "Order",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
@@ -101,7 +102,9 @@
       "edit": "Edit",
       "open": "Open",
       "save": "Save",
-      "view": "View"
+      "view": "View",
+      "exchange": "Exchange",
+      "confirm": "Confirm"
     },
     "detail": {
       "field": "Field",

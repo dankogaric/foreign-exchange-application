@@ -7,9 +7,10 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entitäten",
-        "currency": "Currency",
-        "currencyPair": "Currency Pair",
-        "order": "Order",
+        "currency": "Währung",
+        "currencyPair": "Währungspaar",
+        "order": "Bestellen",
+        "exchange": "Wechseln",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
@@ -101,7 +102,9 @@
       "edit": "Bearbeiten",
       "open": "Öffnen",
       "save": "Speichern",
-      "view": "Details"
+      "view": "Einzelheiten",
+      "exchange": "Wechseln",
+      "confirm": "Bestätigen"
     },
     "detail": {
       "field": "Feld",

@@ -11,10 +11,10 @@
     <jhi-alert-error></jhi-alert-error>
     <jhi-alert></jhi-alert>
     <br/>
-    <div class="alert alert-warning" *ngIf="currencyPairs?.length === 0">
+    <div class="alert alert-warning" *ngIf="currencyPairs!.length === 0">
         <span jhiTranslate="foreignExchangeApp.currencyPair.home.notFound">No currencyPairs found</span>
     </div>
-    <div class="table-responsive" *ngIf="currencyPairs?.length > 0">
+    <div class="table-responsive" *ngIf="currencyPairs!.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
@@ -33,24 +33,24 @@
                 <td>{{currencyPair.exchangeRate}}</td>
                 <td>
                     <div *ngIf="currencyPair.currencyToSell">
-                        <a [routerLink]="['/currency', currencyPair.currencyToSell?.id, 'view' ]" >{{currencyPair.currencyToSell?.id}}</a>
+                        <a [routerLink]="['/currency', currencyPair.currencyToSell?.id, 'view' ]" >{{currencyPair.currencyToSell?.name}}</a>
                     </div>
                 </td>
                 <td>
                     <div *ngIf="currencyPair.currencyToBuy">
-                        <a [routerLink]="['/currency', currencyPair.currencyToBuy?.id, 'view' ]" >{{currencyPair.currencyToBuy?.id}}</a>
+                        <a [routerLink]="['/currency', currencyPair.currencyToBuy?.id, 'view' ]" >{{currencyPair.currencyToBuy?.name}}</a>
                     </div>
                 </td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"
-                                [routerLink]="['/currency-pair', currencyPair.id, 'view' ]"
+                                [routerLink]="['/currency-pair', currencyPair!.id, 'view' ]"
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/currency-pair', currencyPair.id, 'edit']"
+                                [routerLink]="['/currency-pair', currencyPair!.id, 'edit']"
                                 class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
@@ -66,7 +66,7 @@
             </tbody>
         </table>
     </div>
-    <div *ngIf="currencyPairs?.length > 0">
+    <div *ngIf="currencyPairs!.length > 0">
         <div class="row justify-content-center">
             <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
         </div>

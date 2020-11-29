@@ -1,0 +1,65 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="foreignExchangeApp.exchange.home.title">Exchange Currencies</span>
+        <button id="jh-refresh-rates" class="btn btn-success float-right jh-create-entity create-currency-pair" (click)="refreshRates()">
+            <fa-icon [icon]="'sync'"></fa-icon>
+            <span  jhiTranslate="foreignExchangeApp.exchange.refreshRates">
+            Refresh Rates
+            </span>
+        </button>
+    </h2>
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <jhi-alert-error></jhi-alert-error>
+            <jhi-alert></jhi-alert>
+            <form name="editForm" role="form" novalidate (ngSubmit)="confirmOrder()" [formGroup]="exchangeForm">
+                <jhi-alert-error></jhi-alert-error>
+                <div class="row">
+                    <div class="form-group col">
+                        <label class="form-control-label" jhiTranslate="foreignExchangeApp.exchange.amountToPurchase"
+                            for="field_purchasedAmount">Amount to Purchase</label>
+                        <input type="number" class="form-control" name="purchasedAmount" id="field_purchasedAmount"
+                            formControlName="purchasedAmount" [(ngModel)]="amountToBuy" (input)="amountToBuyChanged()" required/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col">
+                        <label class="form-control-label" jhiTranslate="foreignExchangeApp.exchange.purchasedCurrency"
+                            for="field_purchasedCurrency">From</label>
+                        <select class="form-control" id="field_purchasedCurrency" name="purchasedCurrency"
+                            formControlName="purchasedCurrency" [(ngModel)]="selectedCurrency" (change)="currencyChanged()">
+                            <option [ngValue]="null"></option>
+                            <option
+                                [ngValue]="currencyOption.id === exchangeForm.get('purchasedCurrency')!.value?.id ? exchangeForm.get('purchasedCurrency')!.value : currencyOption"
+                                *ngFor="let currencyOption of currenciesToBuy; trackBy: trackById">
+                                {{currencyOption.abbreviation}} - {{currencyOption.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col">
+                        <label class="form-control-label" jhiTranslate="foreignExchangeApp.exchange.amountToPay"
+                            for="field_surchargeAmount">Amount to Pay</label>
+                        <input type="number" class="form-control" name="paidAmount" id="field_paidAmount"
+                            formControlName="paidAmount" [ngModel]="amountToSell" required/>
+                    </div>
+                </div>
+                <div class="row" [hidden]="true">
+                    <div class="form-group">
+                        <label for="id" jhiTranslate="global.field.id">ID</label>
+                        <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                            readonly />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col">
+                        <button type="submit" id="save-entity" [disabled]="exchangeForm.invalid || isSaving"
+                            class="btn btn-primary">
+                            <fa-icon [icon]="'sync'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.exchange">Save</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
