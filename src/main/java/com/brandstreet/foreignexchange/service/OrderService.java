@@ -25,7 +25,7 @@ public class OrderService {
     // @Value("${jhipster.mail.to}") - This should be specified mail to send notification on.
     // Because of specific jhipster tools, it can not be added new property without 
     // including the blueprint the usual way. But it is a usual way to (@Value) to put the
-    // configurable property.
+    // configurable property. The configuration source is application-prod(dev).yml
     // So that is why a put it in variable.
     private final String mailTo = "garic.danko@gmail.com";
     
