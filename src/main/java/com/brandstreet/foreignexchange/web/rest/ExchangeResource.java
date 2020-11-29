@@ -34,7 +34,6 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("/api")
-@Transactional
 public class ExchangeResource {
 
     private final Logger log = LoggerFactory.getLogger(ExchangeResource.class);

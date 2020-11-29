@@ -30,7 +30,6 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("/api")
-@Transactional
 public class OrderResource {
 
     private final Logger log = LoggerFactory.getLogger(OrderResource.class);

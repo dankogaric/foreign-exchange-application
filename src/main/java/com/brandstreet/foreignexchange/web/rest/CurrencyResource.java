@@ -31,7 +31,6 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("/api")
-@Transactional
 public class CurrencyResource {
 
     private final Logger log = LoggerFactory.getLogger(CurrencyResource.class);
