@@ -1,7 +1,7 @@
 package com.brandstreet.foreignexchange.web.rest;
 
 import com.brandstreet.foreignexchange.domain.CurrencyPair;
-import com.brandstreet.foreignexchange.repository.CurrencyPairRepository;
+import com.brandstreet.foreignexchange.service.CurrencyPairService;
 import com.brandstreet.foreignexchange.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -9,14 +9,13 @@ import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional; 
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -31,20 +30,17 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("/api")
-public class CurrencyPairResource {
+public class CurrencyPairController {
 
-    private final Logger log = LoggerFactory.getLogger(CurrencyPairResource.class);
+    private final Logger log = LoggerFactory.getLogger(CurrencyPairController.class);
 
     private static final String ENTITY_NAME = "currencyPair";
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    private final CurrencyPairRepository currencyPairRepository;
-
-    public CurrencyPairResource(CurrencyPairRepository currencyPairRepository) {
-        this.currencyPairRepository = currencyPairRepository;
-    }
+    @Autowired
+    private CurrencyPairService currencyPairService;
 
     /**
      * {@code POST  /currency-pairs} : Create a new currencyPair.
@@ -59,7 +55,7 @@ public class CurrencyPairResource {
         if (currencyPair.getId() != null) {
             throw new BadRequestAlertException("A new currencyPair cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        CurrencyPair result = currencyPairRepository.save(currencyPair);
+        CurrencyPair result = currencyPairService.save(currencyPair);
         return ResponseEntity.created(new URI("/api/currency-pairs/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -80,7 +76,7 @@ public class CurrencyPairResource {
         if (currencyPair.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        CurrencyPair result = currencyPairRepository.save(currencyPair);
+        CurrencyPair result = currencyPairService.save(currencyPair);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, currencyPair.getId().toString()))
             .body(result);
@@ -97,7 +93,7 @@ public class CurrencyPairResource {
     @GetMapping("/currency-pairs")
     public ResponseEntity<List<CurrencyPair>> getAllCurrencyPairs(Pageable pageable) {
         log.debug("REST request to get a page of CurrencyPairs");
-        Page<CurrencyPair> page = currencyPairRepository.findAll(pageable);
+        Page<CurrencyPair> page = currencyPairService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
@@ -111,7 +107,7 @@ public class CurrencyPairResource {
     @GetMapping("/currency-pairs/{id}")
     public ResponseEntity<CurrencyPair> getCurrencyPair(@PathVariable Long id) {
         log.debug("REST request to get CurrencyPair : {}", id);
-        Optional<CurrencyPair> currencyPair = currencyPairRepository.findById(id);
+        Optional<CurrencyPair> currencyPair = currencyPairService.findById(id);
         return ResponseUtil.wrapOrNotFound(currencyPair);
     }
 
@@ -124,7 +120,7 @@ public class CurrencyPairResource {
     @DeleteMapping("/currency-pairs/{id}")
     public ResponseEntity<Void> deleteCurrencyPair(@PathVariable Long id) {
         log.debug("REST request to delete CurrencyPair : {}", id);
-        currencyPairRepository.deleteById(id);
+        currencyPairService.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
 }

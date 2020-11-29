@@ -2,6 +2,7 @@ package com.brandstreet.foreignexchange.web.rest;
 
 import com.brandstreet.foreignexchange.domain.Order;
 import com.brandstreet.foreignexchange.repository.OrderRepository;
+import com.brandstreet.foreignexchange.service.OrderService;
 import com.brandstreet.foreignexchange.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -9,14 +10,13 @@ import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional; 
+import org.springframework.http.ResponseEntity; 
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -30,21 +30,18 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("/api")
-public class OrderResource {
+public class OrderController {
 
-    private final Logger log = LoggerFactory.getLogger(OrderResource.class);
+    private final Logger log = LoggerFactory.getLogger(OrderController.class);
 
     private static final String ENTITY_NAME = "order";
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    private final OrderRepository orderRepository;
-
-    public OrderResource(OrderRepository orderRepository) {
-        this.orderRepository = orderRepository;
-    }
-
+    @Autowired
+    private OrderService orderService;
+    
     /**
      * {@code POST  /orders} : Create a new order.
      *
@@ -58,7 +55,7 @@ public class OrderResource {
         if (order.getId() != null) {
             throw new BadRequestAlertException("A new order cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        Order result = orderRepository.save(order);
+        Order result = orderService.save(order);
         return ResponseEntity.created(new URI("/api/orders/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -79,7 +76,7 @@ public class OrderResource {
         if (order.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        Order result = orderRepository.save(order);
+        Order result = orderService.save(order);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, order.getId().toString()))
             .body(result);
@@ -96,7 +93,7 @@ public class OrderResource {
     @GetMapping("/orders")
     public ResponseEntity<List<Order>> getAllOrders(Pageable pageable) {
         log.debug("REST request to get a page of Orders");
-        Page<Order> page = orderRepository.findAll(pageable);
+        Page<Order> page = orderService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
@@ -110,7 +107,7 @@ public class OrderResource {
     @GetMapping("/orders/{id}")
     public ResponseEntity<Order> getOrder(@PathVariable Long id) {
         log.debug("REST request to get Order : {}", id);
-        Optional<Order> order = orderRepository.findById(id);
+        Optional<Order> order = orderService.findById(id);
         return ResponseUtil.wrapOrNotFound(order);
     }
 
@@ -123,7 +120,7 @@ public class OrderResource {
     @DeleteMapping("/orders/{id}")
     public ResponseEntity<Void> deleteOrder(@PathVariable Long id) {
         log.debug("REST request to delete Order : {}", id);
-        orderRepository.deleteById(id);
+        orderService.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
 }
