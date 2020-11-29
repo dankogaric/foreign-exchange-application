@@ -1,11 +1,4 @@
-id;name;exchange_rate
-1;multi-;29663
-2;overri;72516
-3;virtua;72940
-4;Cambri;69687
-5;Money ;58257
-6;Admini;28447
-7;Shirt;81164
-8;progra;64421
-9;Music;14305
-10;Wooden;27822
+id;name;exchange_rate;currency_to_sell_id;currency_to_buy_id
+1;"USDJPY";108.55;1;2
+2;"USDGBP";0.77816;1;3
+3;"USDEUR";0.87411;1;4

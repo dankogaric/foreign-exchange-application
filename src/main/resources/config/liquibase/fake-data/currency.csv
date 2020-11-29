@@ -1,11 +1,5 @@
 id;abbreviation;name;country;fee;discount
-1;arc;wireless Soft primary;Uruguay;86542;81117
-2;inv;Handcrafted Granite Table;Saint Martin;86183;85972
-3;reg;Savings Account Administrator Meadow;Mongolia;99793;19857
-4;com;integrate Orchestrator;Finland;60195;93952
-5;pol;Massachusetts Money Market Account;Cayman Islands;48144;3138
-6;Ide;neural;Equatorial Guinea;91501;61657
-7;Hom;6th generation;China;91301;18226
-8;JSO;Computers;Antarctica (the territory South of 60 deg S);21112;90547
-9;Per;wireless;Norfolk Island;23298;70033
-10;syn;revolutionary;Dominican Republic;89928;24230
+1;"USD";"American dollar";"USA";0;0
+2;"JPY";"Japanese Yen";"Japan";7.5;0
+3;"GBP";"British pound";"Great Britain";5;0
+4;"EUR";"Euro";"Euro Zone";5;2
