@@ -188,11 +188,13 @@ public class Order implements Serializable {
     public String toString() {
         return "Order{" +
             "id=" + getId() +
+            ", surchargePercentage=" + getSurchargePercentage() +
             ", surchargeAmount=" + getSurchargeAmount() +
             ", purchasedAmount=" + getPurchasedAmount() +
             ", paidAmount=" + getPaidAmount() +
             ", discountPercentage=" + getDiscountPercentage() +
             ", discountAmount=" + getDiscountAmount() +
+            ", exchangeRate=" + getExchangeRate() +
             ", creationDate='" + getCreationDate() + "'" +
             "}";
     }
